@@ -72,14 +72,10 @@ public class GXCommunicate
         }
     }
 
-     /// <summary>
-    /// Read DLMS Data from the device.
-    /// </summary>
-    /// <remarks>
-    /// If access is denied return null.
-    /// </remarks>
-    /// <param name="data">Data to send.</param>
-    /// <returns>Received data.</returns>
+    /*
+     * Read DLMS Data from the device.
+     * If access is denied return null.
+     */
     public byte[] readDLMSPacket(byte[] data) throws Exception
     {
         if (data == null || data.length == 0)
