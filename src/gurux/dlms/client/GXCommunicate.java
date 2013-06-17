@@ -88,7 +88,7 @@ public class GXCommunicate
         {
             eop = null;
         }
-        int pos = 0;
+        Integer pos = 0;
         boolean succeeded = false;
         ReceiveParameters<byte[]> p = new ReceiveParameters<>(byte[].class);
         p.setAllData(true);
@@ -107,6 +107,12 @@ public class GXCommunicate
                 succeeded = Media.receive(p);
                 if (!succeeded)
                 {
+                    //Try to read again...
+                    if (++pos != 3)
+                    {
+                        System.out.println("Data send failed. Try to resend " + pos.toString() + "/3");
+                        continue;
+                    }   
                     throw new Exception("Failed to receive reply from the device in given time.");
                 }
             }
